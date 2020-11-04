@@ -1,0 +1,74 @@
+import { Meta, Story, Preview,ArgsTable  } from '@storybook/addon-docs/blocks';
+import { OnboardingComponent } from '../app/onboarding/onboarding.component';
+import { moduleMetadata } from "@storybook/angular";
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app/app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OnboardingService } from '../app/onboarding/onboarding.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+
+<Meta title="MDX/Onboarding Component" decorators={[
+    moduleMetadata({
+    declarations:[OnboardingComponent],
+    imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([], { useHash: true })
+  ],
+      providers: [OnboardingService,{provide: APP_BASE_HREF, useValue : '/' }]
+    }),
+]} parameters={{
+    component: OnboardingComponent,
+    backgrounds: {
+    values: [
+      { name: 'red', value: '#f00' },
+      { name: 'green', value: '#0f0' },
+    ]
+}}}/>
+
+# Onboarding Component 
+
+
+
+Stotybook Docs allows you to mix stories and documentation in 
+[MDX Format](https://mdxjs.com/)
+
+
+This is roughly equivalent to SB5's `storiesOf` :
+
+```
+storiesOf('MDX|Onboarding Component',module)
+    .addParameter({component: OnboardingComponent})
+
+```
+
+
+## Stories
+
+
+### Submit Documents
+
+This is the first part of the stepper form. In this, the user can uplaod the required 
+documents in .pdf or.docx format. Once the document is uploaded, the user can also download it.
+
+<Preview>
+  <Story name="Submit Documents">{{
+    component: OnboardingComponent,
+    template:'<app-onboarding></app-onboarding>',
+    props:{
+    },
+    }}    
+  </Story>
+</Preview>
+
+## ArgsTable
+
+<ArgsTable of={OnboardingComponent} />
