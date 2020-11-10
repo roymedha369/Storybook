@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-
+import { MINIMAL_VIEWPORTS} from '@storybook/addon-viewport';
 
 export default {
   title: 'CSF/Onboarding Component',
@@ -24,6 +24,10 @@ export default {
       providers: []})],
       parameters: {
       },
+      argTypes: {
+        backgroundColor: { control: 'color' },
+        employeeForm:{backgroundColor: { control: 'color' }}
+      },
 
 } as Meta;
 
@@ -32,5 +36,44 @@ const Template: Story<OnboardingComponent> = (args) => ({
   props: args,
 });
 
+const customViewports = {
+  kindleFire2: {
+    name: 'Kindle Fire 2',
+    styles: {
+      width: '600px',
+      height: '963px',
+    },
+  },
+  kindleFireHD: {
+    name: 'Kindle Fire HD',
+    styles: {
+      width: '533px',
+      height: '801px',
+    },
+  },
+};
+
+
 export const SubmitDocuments = Template.bind({});
-SubmitDocuments.parameters={docs:{ storyDescription: "This is the first part of the stepper form. In this, the user can uplaod the required documents in .pdf or.docx format. Once the document is uploaded, the user can also download it."}};
+SubmitDocuments.parameters={docs: { storyDescription: "This is the first part of the stepper form. In this, the user can uplaod the required documents in .pdf or.docx format. Once the document is uploaded, the user can also download it."},
+viewport: {
+  viewports: {
+     ...MINIMAL_VIEWPORTS,
+    ...customViewports,
+  },
+},};
+// SubmitDocuments.argTypes={
+//   employeeForm:{borderWidth: { control: { type: 'number', min: 0, max: 10 }}}
+// }
+
+
+SubmitDocuments.argTypes={toggle:{control:'boolean'},loadingState: {
+  control: {
+    type: 'inline-radio',
+    options: ['loading', 'error', 'ready'],
+  },width: { 
+    control: { type: 'range', min: 400, max: 1200, step: 50 },
+  },size: 'large'
+}};
+
+

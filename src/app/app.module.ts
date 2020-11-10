@@ -8,17 +8,22 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    OnboardingComponent
+    OnboardingComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+   
+
   ],
   providers: [OnboardingService],
   bootstrap: [AppComponent]
