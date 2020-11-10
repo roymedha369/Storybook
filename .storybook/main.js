@@ -7,10 +7,27 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-backgrounds",
-    "@storybook/addon-docs",
+   
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
     "@storybook/addon-controls",
-    "@storybook/addon-storysource",
+    
+    {
+      name: '@storybook/addon-storysource',
+      options: {
+        loaderOptions: {
+          prettierConfig: { printWidth: 80, singleQuote: false },
+          injectStoryParameters: false,
+        },
+      },
+    },
   ]
 }
